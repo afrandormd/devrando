@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import getSortedPosts from "@utils/getSortedPosts";
+import SearchBar from "@components/Search";
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Pagination from "@components/Pagination.astro";
+import Card from "@components/Card";
+import Hr from "@components/Hr.astro";
+import { SITE } from "@config";
+
+export interface Props {
+  currentPage: number;
+  totalPages: number;
+  paginatedPosts: CollectionEntry<"blog">[];
+}
+
+const { currentPage, totalPages, paginatedPosts } = Astro.props;
+
+// Retrieve all published articles
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+const sortedPosts = getSortedPosts(posts);
+
+// List of items to search in
+const searchList = sortedPosts.map(({ data, slug }) => ({
+  title: data.title,
+  description: data.description,
+  data,
+  slug,
+}));
+---
+
+<Layout title={`Posts | ${SITE.title}`}>
+  <Header activeNav="posts" />
+  <Main pageTitle="" pageDesc="">
+    <p class="my-4">Hello, everyone! Welcome to my personal blog.
+    In this blog, I will be writing about my projects (what I do/how I did), my personal experiences, and some random stuffs.</p>
+    <SearchBar client:load searchList={searchList} />
+    <br>
+    <Hr />
+    <ul>
+      {
+        paginatedPosts.map(({ data, slug }) => (
+          <Card href={`/posts/${slug}/`} frontmatter={data} />
+        ))
+      }
+    </ul>
+  </Main>
+
+  <Pagination
+    {currentPage}
+    {totalPages}
+    prevUrl={`/posts${currentPage - 1 !== 1 ? "/" + (currentPage - 1) : ""}/`}
+    nextUrl={`/posts/${currentPage + 1}/`}
+  />
+
+  <Footer noMarginTop={totalPages > 1} />
+</Layout>

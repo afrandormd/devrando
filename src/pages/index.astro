@@ -1,0 +1,171 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import HeaderIndex from "@components/HeaderIndex.astro";
+import Footer from "@components/Footer.astro";
+import LinkButton from "@components/LinkButton.astro";
+import Card from "@components/Card";
+// import Socials from "@components/Socials.astro";
+import getSortedPosts from "@utils/getSortedPosts";
+// import { SITE, SOCIALS } from "@config";
+import { SITE } from "@config";
+import Weapons from "@components/Weapons.astro";
+import Journey from "@components/Journey.astro";
+import Missions from "@components/Missions.astro";
+import Contact from "@components/Contact.astro";
+import Profile from "@components/Profile.astro";
+import ScrollButton from "@components/ScrollButton.astro";
+
+const posts = await getCollection("blog");
+
+const sortedPosts = getSortedPosts(posts);
+// const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+
+// const socialCount = SOCIALS.filter(social => social.active).length;
+---
+
+<Layout>
+  <HeaderIndex />
+  <main id="main-content">
+    <section id="hero" class="mt-24">
+      <!-- <a
+        target="_blank"
+        href="/rss.xml"
+        class="rss-link"
+        aria-label="rss feed"
+        title="RSS Feed"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
+          ><path
+            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
+          ></path><path
+            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
+          ></path><circle cx="6" cy="18" r="2"></circle>
+        </svg>
+        <span class="sr-only">RSS Feed</span>
+      </a> -->
+      <Profile />
+      <ScrollButton />
+      <!-- {
+        // only display if at least one social link is enabled
+        socialCount > 0 && (
+          <div class="social-wrapper align-center">
+            {/* <div class="social-links">Social Links:</div> */}
+            <Socials />
+          </div>
+        )
+      } -->
+      <!-- weapon -->
+      <Weapons />
+      <!-- weapon -->
+      <!-- journey -->
+      <Journey />
+      <!-- journey -->
+      <!-- Missions -->
+      <Missions /> 
+      <!-- Missions -->
+    </section>
+    <!-- {
+      featuredPosts.length > 0 && (
+        <>
+          <section id="featured">
+            <h2>Featured</h2>
+            <ul>
+              {featuredPosts.map(({ data, slug }) => (
+                <Card
+                  href={`/posts/${slug}/`}
+                  frontmatter={data}
+                  secHeading={false}
+                />
+              ))}
+            </ul>
+          </section>
+          {recentPosts.length > 0 && <Hr />}
+        </>
+      )
+    } -->
+
+    {
+      recentPosts.length > 0 && (
+        <section id="recent-posts">
+                <div
+        class="font-primary flex flex-col items-center gap-2 lg:gap-4 mb-12"
+      >
+        <h3 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white">Recent Posts</h3>
+        <p class="text-white-muted text-xl lg:text-2xl">
+          Posts I &#39;ve made
+        </p>
+      </div>
+          <ul>
+            {recentPosts.map(
+              ({ data, slug }, index) =>
+                index < SITE.postPerIndex && (
+                  <Card
+                    href={`/posts/${slug}/`}
+                    frontmatter={data}
+                    secHeading={false}
+                  />
+                )
+            )}
+          </ul>
+        </section>
+      )
+    }
+
+    <div class="all-posts-btn-wrapper">
+      <LinkButton href="/posts/">
+        All Posts
+        <svg xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+          ></path>
+        </svg>
+      </LinkButton>
+    </div>
+    <section>
+      <!-- Contact -->
+      <Contact />
+      <!-- Contact -->
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== Hero Section ===== */
+  #hero {
+    @apply pb-6 pt-8;
+  }
+  #hero h1 {
+    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+  }
+  #hero .rss-link {
+    @apply mb-6;
+  }
+  #hero .rss-icon {
+    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
+  }
+  #hero p {
+    @apply my-2;
+  }
+  .social-wrapper {
+    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
+  }
+  .social-links {
+    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+  }
+
+  /* ===== Featured & Recent Posts Sections ===== */
+  #featured,
+  #recent-posts {
+    @apply pb-6 pt-12;
+  }
+  #featured h2,
+  #recent-posts h2 {
+    @apply text-2xl font-semibold tracking-wide;
+  }
+  .all-posts-btn-wrapper {
+    @apply my-8 text-center;
+  }
+</style>
