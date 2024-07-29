@@ -15,6 +15,7 @@ import Missions from "@components/Missions.astro";
 import Contact from "@components/Contact.astro";
 import Profile from "@components/Profile.astro";
 import ScrollButton from "@components/ScrollButton.astro";
+import Awards from "@components/Awards.astro";
 
 const posts = await getCollection("blog");
 
@@ -65,6 +66,9 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       <!-- Missions -->
       <Missions /> 
       <!-- Missions -->
+      <!-- Awards -->
+      <Awards />
+      <!-- Awards -->
     </section>
     <!-- {
       featuredPosts.length > 0 && (
