@@ -15,7 +15,8 @@ import Missions from "@components/Missions.astro";
 import Contact from "@components/Contact.astro";
 import Profile from "@components/Profile.astro";
 import ScrollButton from "@components/ScrollButton.astro";
-import Awards from "@components/Awards.astro";
+//import Awards from "@components/Awards.astro";
+import AwardScroll from "@components/AwardScroll.astro";
 
 const posts = await getCollection("blog");
 
@@ -65,9 +66,19 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       <!-- journey -->
       <!-- Missions -->
       <Missions /> 
+      <div class="all-posts-btn-wrapper">
+      <LinkButton href="/projects/">
+        All Projects
+        <svg xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+          ></path>
+        </svg>
+      </LinkButton>
+    </div>
       <!-- Missions -->
       <!-- Awards -->
-      <Awards />
+      <AwardScroll />
       <!-- Awards -->
     </section>
     <!-- {
@@ -101,7 +112,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
           Posts I &#39;ve made
         </p>
       </div>
-          <ul>
+          <ul class="p-4 border-2 border-skin-accent border-dashed rounded-md">
             {recentPosts.map(
               ({ data, slug }, index) =>
                 index < SITE.postPerIndex && (

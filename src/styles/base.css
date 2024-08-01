@@ -81,6 +81,10 @@
     @apply w-3;
   }
 
+  .horizontal-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Track */
   ::-webkit-scrollbar-track {
     @apply bg-skin-fill;
