@@ -11,7 +11,7 @@ import getSortedPosts from "@utils/getSortedPosts";
 import { SITE } from "@config";
 import Weapons from "@components/Weapons.astro";
 import Journey from "@components/Journey.astro";
-import Missions from "@components/Missions.astro";
+// import Missions from "@components/Missions.astro";
 import Contact from "@components/Contact.astro";
 import Profile from "@components/Profile.astro";
 import ScrollButton from "@components/ScrollButton.astro";
@@ -65,8 +65,8 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       <Journey />
       <!-- journey -->
       <!-- Missions -->
-      <Missions /> 
-      <div class="all-posts-btn-wrapper">
+      <!-- <Missions />  -->
+      <!-- <div class="all-posts-btn-wrapper">
       <LinkButton href="/projects/">
         All Projects
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
           ></path>
         </svg>
       </LinkButton>
-    </div>
+    </div> -->
       <!-- Missions -->
       <!-- Awards -->
       <AwardScroll />
