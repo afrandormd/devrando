@@ -1,11 +1,11 @@
 import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
-  website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
+  website: "https://devrando.vercel.app/", // replace this with your deployed domain
   author: "Dev Rando",
-  profile: "https://rando.dev/",
-  desc: "Website fullstack website developer junior",
-  title: "Dev Rando",
+  profile: "https://devrando.vercel.app/",
+  desc: "I am a Front End Developer with my expertise in React, NextJS, Flutter on the frontend.",
+  title: "Dev Rando | Front End Developer",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,
