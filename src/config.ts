@@ -5,7 +5,7 @@ export const SITE: Site = {
   author: "Dev Rando",
   profile: "https://devrando.vercel.app/",
   desc: "I am a Front End Developer with my expertise in React, NextJS, Flutter on the frontend.",
-  title: "Dev Rando | Front End Developer",
+  title: "Dev Rando",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,
