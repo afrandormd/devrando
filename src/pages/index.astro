@@ -13,9 +13,11 @@ import Weapons from "@components/Weapons.astro";
 import Journey from "@components/Journey.astro";
 // import Missions from "@components/Missions.astro";
 import Contact from "@components/Contact.astro";
+import Stats from "@components/Stats.astro";
+import Abillities from "@components/Abillities.astro";
 import Profile from "@components/Profile.astro";
 import ScrollButton from "@components/ScrollButton.astro";
-//import Awards from "@components/Awards.astro";
+// import Awards from "@components/Awards.astro";
 import AwardScroll from "@components/AwardScroll.astro";
 
 const posts = await getCollection("blog");
@@ -48,6 +50,9 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         <span class="sr-only">RSS Feed</span>
       </a> -->
       <Profile />
+      <!-- Stats -->
+      <Stats />
+      <!-- ScrollButton -->
       <ScrollButton />
       <!-- {
         // only display if at least one social link is enabled
@@ -60,10 +65,10 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       } -->
       <!-- weapon -->
       <Weapons />
-      <!-- weapon -->
+      <!-- Abillities -->
+      <Abillities />
       <!-- journey -->
       <Journey />
-      <!-- journey -->
       <!-- Missions -->
       <!-- <Missions />  -->
       <!-- <div class="all-posts-btn-wrapper">
@@ -107,10 +112,8 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
                 <div
         class="font-primary flex flex-col items-center gap-2 lg:gap-4 mb-12"
       >
-        <h3 class="text-4xl md:text-5xl lg:text-6xl font-bold text-skin-text-base">Recent Posts</h3>
-        <p class="text-white-muted text-xl lg:text-2xl">
-          Posts I &#39;ve made
-        </p>
+        <h3 class="text-4xl md:text-5xl lg:text-6xl font-bold text-skin-accent">Journal📝</h3>
+        <p class="text-white-muted text-xl lg:text-2xl text-center">My thoughts, insights, and experiences documented along the way.</p>
       </div>
           <ul class="p-4 border-2 border-skin-accent border-dashed rounded-md">
             {recentPosts.map(

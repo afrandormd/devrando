@@ -5,7 +5,7 @@ import { LOGO_IMAGE, SITE } from "@config";
 export interface Props {
   // default
   // activeNav?: "posts" | "tags" | "about" | "search";
-  activeNav?: "weapons" | "journey" | "completed-missions" | "contact";
+  activeNav?: "weapons" | "journey" | "completed-missions" | "contact" | "abillities";
 }
 
 const { activeNav } = Astro.props;
@@ -60,10 +60,13 @@ const { activeNav } = Astro.props;
             <a href="#weapons" class={activeNav === "weapons" ? "active" : ""}>Weapons</a>
           </li>
           <li>
+            <a href="#abillities" class={activeNav === "abillities" ? "active" : ""}>Abillities</a>
+          </li>
+          <li>
             <a href="#journey" class={activeNav === "journey" ? "active" : ""}>Journey</a>
           </li>
           <!-- <li>
-            <a href="#completed-missions" class={activeNav === "completed-missions" ? "active" : ""}>Completed Missions</a>
+            <a href="#completed-missions" class={activeNav === "completed-missions" ? "active" : ""}>Missions</a>
           </li> -->
           <li>
             <a href="#contact" class={activeNav === "contact" ? "active" : ""}>Contact</a>
