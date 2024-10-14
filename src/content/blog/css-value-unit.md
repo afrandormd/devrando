@@ -10,17 +10,30 @@ tags:
 description: belajar css unit & value
 ---
 
- Introductory Sentence
+ Dalam CSS, nilai & satuan sangatlah penting karena digunakan untuk mengatur element yang ada pada css.
 
 ## Table of contents
 ![]
-## CSS Value (nilai)
-Berikut ini adalah value / nilai yang dapat kita kasih pada css
-- **Integer**
-	angka yang berupa bilangan bulat(positif/negatif), contohnya: 10, -20
-- **Number**
-	angka namun dapat berupa bilangan desimal, contohnya: 0.5
-- **Percentage**
-	yaitu nilai yang di unit menggunakan symbol `%`, contohnya: 50%
-- **Dimension**
-	yaitu nilai yang digabung dengan satuan, contohnya: 10vh, 20vw, 5em, 10rem 
+## CSS Value (nilai) & Unit (satuan)
+![css-struktur](https://res.cloudinary.com/dxfcrtzo7/image/upload/f_auto,q_auto/v1/devrando-portfolio/Posts/CSS/cxkkpmhhfrivyg3kfslv)
+
+Beragam contoh Penerapan value & unit:
+
+
+## Value / nilai yang ada pada CSS
+### Integer
+### Number
+### Percentage
+### Dimension
+- Pixel
+- Gatau
+
+
+
+| **Jenis Value**  | **Deskripsi**                                            | **Contoh**          |
+|------------------|----------------------------------------------------------|---------------------|
+| **Integer**      | Angka berupa bilangan bulat (positif/negatif).            | 10, -20             |
+| **Number**       | Angka yang dapat berupa bilangan desimal.                 | 0.5                 |
+| **Percentage**   | Nilai yang menggunakan simbol `%`.                        | 50%                 |
+| **Dimension**    | Nilai yang digabung dengan satuan (vh, vw, em, rem, dll). | 10vh, 20vw, 5em, 10rem |
+
